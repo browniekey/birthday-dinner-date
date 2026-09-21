@@ -16,6 +16,13 @@
       --gold: #d4af37;
       --text-dark: #2b2b2b;
       --card-bg: #ffffff;
+      
+      /* Colors matching the reference otter image */
+      --otter-fur: #b27053;
+      --otter-fur-dark: #915137;
+      --otter-cream: #fcf1df;
+      --otter-stroke: #2d1b14;
+      --water-blue: #84c2d4;
     }
 
     * {
@@ -35,22 +42,20 @@
       padding: 20px;
       overflow-x: hidden;
       background-image: radial-gradient(var(--maroon) 0.5px, transparent 0.5px), radial-gradient(var(--emerald) 0.5px, var(--bg-color) 0.5px);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
-      background-opacity: 0.05;
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
     }
 
     .container {
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       background: var(--card-bg);
-      border-radius: 24px;
-      box-shadow: 0 15px 35px rgba(107, 29, 47, 0.12);
-      border: 2px solid rgba(212, 175, 55, 0.3);
-      padding: 30px 24px;
+      border-radius: 28px;
+      box-shadow: 0 18px 40px rgba(107, 29, 47, 0.12);
+      border: 2px solid rgba(212, 175, 55, 0.35);
+      padding: 32px 24px;
       text-align: center;
       position: relative;
-      transition: all 0.3s ease;
     }
 
     .badge {
@@ -59,8 +64,8 @@
       color: #fff;
       padding: 6px 16px;
       border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 12px;
@@ -69,7 +74,7 @@
     h1, h2 {
       font-family: 'Cinzel', serif;
       color: var(--maroon);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     p {
@@ -78,42 +83,39 @@
       line-height: 1.5;
     }
 
-    /* SVG Otter Styles */
+    /* Otter Visual Wrapper */
     .otter-container {
-      width: 180px;
-      height: 180px;
-      margin: 15px auto;
+      width: 220px;
+      height: 220px;
+      margin: 10px auto 20px;
       position: relative;
     }
 
     .otter-svg {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 6px 12px rgba(45, 27, 20, 0.15));
     }
 
-    /* Floating Header Status */
+    /* Chef Banner Status */
     .chef-status {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
+      gap: 8px;
       background: rgba(27, 67, 50, 0.08);
-      padding: 8px 16px;
+      border: 1px solid rgba(27, 67, 50, 0.2);
+      padding: 8px 18px;
       border-radius: 30px;
-      margin-bottom: 15px;
-    }
-
-    .chef-status span {
+      margin-bottom: 16px;
       font-size: 0.85rem;
       color: var(--emerald);
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    /* Screens */
+    /* Screen Management */
     .screen {
       display: none;
-      animation: fadeIn 0.4s ease-in-out forwards;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .screen.active {
@@ -121,7 +123,7 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -131,17 +133,17 @@
       gap: 12px;
       justify-content: center;
       align-items: center;
-      margin-top: 25px;
+      margin-top: 24px;
       position: relative;
-      min-height: 50px;
+      min-height: 52px;
     }
 
     .btn {
-      padding: 12px 28px;
+      padding: 14px 28px;
       border-radius: 50px;
       border: none;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -154,7 +156,7 @@
     .btn-primary {
       background-color: var(--maroon);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(107, 29, 47, 0.3);
+      box-shadow: 0 4px 14px rgba(107, 29, 47, 0.35);
     }
 
     .btn-primary:hover {
@@ -165,24 +167,25 @@
     .btn-emerald {
       background-color: var(--emerald);
       color: #fff;
+      box-shadow: 0 4px 14px rgba(27, 67, 50, 0.3);
     }
 
     .btn-emerald:hover {
       background-color: var(--emerald-light);
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
-      background-color: #e2e2e2;
+      background-color: #e8e8e8;
       color: #555;
-      position: relative;
     }
 
-    /* Menu Selection Cards */
+    /* Menu Cards */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
-      margin: 20px 0;
+      margin: 18px 0;
       text-align: left;
     }
 
@@ -202,7 +205,7 @@
 
     .menu-card.selected {
       border-color: var(--maroon);
-      background-color: rgba(107, 29, 47, 0.05);
+      background-color: rgba(107, 29, 47, 0.06);
     }
 
     .menu-card.selected::after {
@@ -212,38 +215,40 @@
       right: 12px;
       color: var(--maroon);
       font-weight: bold;
+      font-size: 0.9rem;
     }
 
     .menu-icon {
       font-size: 1.8rem;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       display: block;
     }
 
     .menu-title {
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--maroon);
     }
 
     .menu-desc {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: #666;
       margin-top: 2px;
+      line-height: 1.3;
     }
 
     /* Form Fields */
     .form-group {
       text-align: left;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
       display: block;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--emerald);
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .form-control {
@@ -253,6 +258,7 @@
       border-radius: 12px;
       font-size: 0.95rem;
       outline: none;
+      background-color: #fff;
     }
 
     .form-control:focus {
@@ -262,17 +268,17 @@
     /* Summary Card */
     .summary-box {
       background: rgba(27, 67, 50, 0.04);
-      border: 1px dashed var(--emerald);
-      border-radius: 16px;
-      padding: 16px;
+      border: 1.5px dashed var(--emerald);
+      border-radius: 18px;
+      padding: 18px;
       text-align: left;
-      margin: 15px 0;
+      margin: 18px 0;
     }
 
     .summary-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-size: 0.9rem;
     }
 
@@ -285,7 +291,7 @@
     }
 
     .summary-val {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--maroon);
     }
   </style>
@@ -298,39 +304,75 @@
     <div id="screen1" class="screen active">
       <span class="badge">Special Invitation</span>
       <h2>28th Birthday Dinner Date</h2>
-      <p style="margin-top: 4px;">21 September 2026</p>
+      <p style="margin-top: 2px; font-weight: 600; color: var(--emerald);">21 September 2026</p>
 
       <div class="otter-container">
-        <!-- Otter Couple Birthday SVG -->
-        <svg class="otter-svg" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="90" fill="#f4f1ea" />
-          <!-- Left Otter (Male/Partner) -->
-          <path d="M 60 110 C 60 70, 100 70, 100 110 Z" fill="#8d5b4c"/>
-          <circle cx="80" cy="90" r="22" fill="#8d5b4c"/>
-          <circle cx="73" cy="88" r="3" fill="#222"/>
-          <circle cx="87" cy="88" r="3" fill="#222"/>
-          <ellipse cx="80" cy="94" rx="4" ry="3" fill="#4a2e2b"/>
-          <path d="M 70 68 L 80 50 L 90 68 Z" fill="#6b1d2f"/> <!-- Party Hat -->
+        <!-- Standing Otter with Fish (Matching Provided Reference Image) -->
+        <svg class="otter-svg" viewBox="0 0 200 220">
+          <!-- Water Puddle Shadow -->
+          <ellipse cx="100" cy="200" rx="65" ry="12" fill="var(--water-blue)"/>
+          <ellipse cx="100" cy="200" rx="55" ry="8" fill="#aee0ee"/>
+
+          <!-- Otter Tail (Curved Upward on Right Side) -->
+          <path d="M 125 165 C 155 165, 175 140, 160 120 C 150 110, 142 125, 145 138 C 147 146, 135 160, 120 162 Z" 
+                fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="4" stroke-linejoin="round"/>
+
+          <!-- Body -->
+          <path d="M 65 110 C 58 140, 60 185, 75 195 L 125 195 C 140 185, 142 140, 135 110 Z" 
+                fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="4"/>
+
+          <!-- Cream Belly Patch -->
+          <path d="M 80 115 C 75 140, 78 185, 88 193 L 112 193 C 122 185, 125 140, 120 115 Z" 
+                fill="var(--otter-cream)"/>
+
+          <!-- Feet -->
+          <path d="M 68 192 C 60 192, 55 198, 68 200 L 90 200 C 92 195, 85 192, 80 192 Z" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3"/>
+          <path d="M 110 192 C 115 192, 108 200, 132 200 C 145 198, 140 192, 132 192 Z" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3"/>
+
+          <!-- Paws/Arms (Cute Front Standing Stance) -->
+          <path d="M 65 125 C 55 135, 62 155, 72 150 C 78 145, 73 130, 68 125 Z" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3"/>
+          <path d="M 135 125 C 145 135, 138 155, 128 150 C 122 145, 127 130, 132 125 Z" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3"/>
+
+          <!-- Head -->
+          <path d="M 55 75 C 55 35, 145 35, 145 75 C 145 105, 55 105, 55 75 Z" 
+                fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="4"/>
+
+          <!-- Cream Snout & Muzzle Patch -->
+          <path d="M 65 75 C 65 58, 135 58, 135 75 C 135 98, 65 98, 65 75 Z" fill="var(--otter-cream)"/>
+
+          <!-- Eyebrow Cream Dots -->
+          <ellipse cx="80" cy="50" rx="5" ry="4" fill="var(--otter-cream)"/>
+          <ellipse cx="120" cy="50" rx="5" ry="4" fill="var(--otter-cream)"/>
+
+          <!-- Eyes (Big glossy dark eyes) -->
+          <ellipse cx="82" cy="62" rx="6" ry="7" fill="var(--otter-stroke)"/>
+          <circle cx="80" cy="60" r="2" fill="#ffffff"/>
           
-          <!-- Right Otter (Female/Birthday Girl) -->
-          <path d="M 100 110 C 100 70, 140 70, 140 110 Z" fill="#a06c5b"/>
-          <circle cx="120" cy="90" r="22" fill="#a06c5b"/>
-          <circle cx="113" cy="88" r="3" fill="#222"/>
-          <circle cx="127" cy="88" r="3" fill="#222"/>
-          <ellipse cx="120" cy="94" rx="4" ry="3" fill="#4a2e2b"/>
-          <!-- Birthday Crown/Tiara -->
-          <polygon points="112,68 116,58 120,68 124,58 128,68" fill="#d4af37"/>
+          <ellipse cx="118" cy="62" rx="6" ry="7" fill="var(--otter-stroke)"/>
+          <circle cx="116" cy="60" r="2" fill="#ffffff"/>
+
+          <!-- Nose -->
+          <ellipse cx="100" cy="68" rx="5" ry="3.5" fill="var(--otter-stroke)"/>
+
+          <!-- Whiskers -->
+          <line x1="68" y1="72" x2="42" y2="68" stroke="var(--otter-stroke)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="68" y1="77" x2="45" y2="80" stroke="var(--otter-stroke)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="132" y1="72" x2="158" y2="68" stroke="var(--otter-stroke)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="132" y1="77" x2="155" y2="80" stroke="var(--otter-stroke)" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Fish in Mouth (From Reference Image) -->
+          <path d="M 72 82 C 85 70, 115 70, 128 82 C 138 88, 125 96, 100 90 C 75 96, 62 88, 72 82 Z" fill="#78b3c5" stroke="var(--otter-stroke)" stroke-width="2.5"/>
+          <circle cx="120" cy="80" r="1.5" fill="var(--otter-stroke)"/>
+          <path d="M 70 82 L 60 76 L 62 84 Z" fill="#78b3c5" stroke="var(--otter-stroke)" stroke-width="2"/>
           
-          <!-- Shared Heart / Birthday Cake -->
-          <rect x="85" y="120" width="30" height="20" rx="4" fill="#6b1d2f"/>
-          <rect x="88" y="115" width="24" height="6" rx="2" fill="#1b4332"/>
-          <line x1="100" y1="115" x2="100" y2="108" stroke="#d4af37" stroke-width="2"/>
-          <circle cx="100" cy="106" r="2" fill="#ff4d4d"/>
+          <!-- Cute Party Hat / Hearts Overlay -->
+          <path d="M 90 38 L 100 18 L 110 38 Z" fill="var(--maroon)"/>
+          <circle cx="100" cy="16" r="3" fill="var(--gold)"/>
         </svg>
       </div>
 
-      <p style="font-size: 1.05rem; font-weight: 600; color: var(--maroon);">
-        Will you celebrate your 28th birthday dinner date with me? 🎂🦦
+      <p style="font-size: 1.05rem; font-weight: 700; color: var(--maroon);">
+        Will you go on a Birthday Dinner Date with me? 🎂🦦
       </p>
 
       <div class="btn-group">
@@ -339,60 +381,60 @@
       </div>
     </div>
 
-    <!-- ================= SCREEN 2: RESTAURANT & TIME ================= -->
+    <!-- ================= SCREEN 2: TIME SELECTION ================= -->
     <div id="screen2" class="screen">
       <div class="chef-status">
-        <span>👨‍🍳 Chef Otter & Waiter Otter Ready! 🦦</span>
+        <span>👨‍🍳 Otter Chef Ready to Serve Chinese Food! 🥟</span>
       </div>
 
-      <h2>Detail Acara & Tempat</h2>
-      <p>Aku udah siapin tempat spesial Chinese Food buat kamu!</p>
+      <h2>Pilih Waktu Dinner</h2>
+      <p>Tentukan jam yang paling nyaman untuk kamu di tanggal 21 September:</p>
 
-      <div class="otter-container" style="width: 130px; height: 130px;">
+      <div class="otter-container" style="width: 170px; height: 170px;">
         <!-- Otter Chef Costume SVG -->
         <svg class="otter-svg" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="85" fill="#f4f1ea" />
-          <!-- Chef Otter -->
-          <circle cx="100" cy="95" r="30" fill="#8d5b4c"/>
           <!-- Chef Hat -->
-          <path d="M 80 75 C 80 50, 120 50, 120 75 Z" fill="#ffffff"/>
-          <rect x="82" y="70" width="36" height="8" fill="#6b1d2f" rx="2"/>
-          <!-- Eyes & Nose -->
-          <circle cx="92" cy="92" r="3" fill="#222"/>
-          <circle cx="108" cy="92" r="3" fill="#222"/>
-          <ellipse cx="100" cy="98" rx="4" ry="3" fill="#4a2e2b"/>
-          <!-- Apron -->
-          <path d="M 80 120 L 120 120 L 115 150 L 85 150 Z" fill="#1b4332"/>
+          <path d="M 75 45 C 70 20, 130 20, 125 45 Z" fill="#ffffff" stroke="var(--otter-stroke)" stroke-width="3"/>
+          <rect x="78" y="42" width="44" height="10" fill="var(--maroon)" rx="3"/>
+          
+          <!-- Otter Head -->
+          <path d="M 60 70 C 60 45, 140 45, 140 70 C 140 95, 60 95, 60 70 Z" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3.5"/>
+          <path d="M 70 70 C 70 58, 130 58, 130 70 C 130 90, 70 90, 70 70 Z" fill="var(--otter-cream)"/>
+          <ellipse cx="85" cy="56" rx="4" ry="3" fill="var(--otter-cream)"/>
+          <ellipse cx="115" cy="56" rx="4" ry="3" fill="var(--otter-cream)"/>
+          <circle cx="85" cy="65" r="4" fill="var(--otter-stroke)"/>
+          <circle cx="115" cy="65" r="4" fill="var(--otter-stroke)"/>
+          <ellipse cx="100" cy="72" rx="4" ry="3" fill="var(--otter-stroke)"/>
+          
+          <!-- Chef Apron Body -->
+          <path d="M 70 95 L 130 95 L 125 160 L 75 160 Z" fill="var(--emerald)" stroke="var(--otter-stroke)" stroke-width="3"/>
+          <path d="M 85 95 L 115 95 L 115 125 L 85 125 Z" fill="#ffffff"/>
         </svg>
       </div>
 
-      <div class="form-group">
-        <label>Restoran yang Dituju:</label>
-        <input type="text" id="restoranName" class="form-control" value="Imperial Kitchen / Dimsum House (Bisa Diubah)" placeholder="Nama Restoran Chinese Food">
-      </div>
-
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px;">
         <label>Pilih Jam Dinner Date (21 September):</label>
         <select id="dinnerTime" class="form-control">
           <option value="18:30 WIB">18:30 WIB (Early Dinner)</option>
           <option value="19:00 WIB" selected>19:00 WIB (Prime Time)</option>
           <option value="19:30 WIB">19:30 WIB (Late Dinner)</option>
+          <option value="20:00 WIB">20:00 WIB (Night Dinner)</option>
         </select>
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-emerald" onclick="goToScreen(3)">Lanjut Pilih Menu 🍜</button>
+        <button class="btn btn-emerald" onclick="goToScreen(3)">Lanjut Pilih Menu Chinese Food 🍜</button>
       </div>
     </div>
 
     <!-- ================= SCREEN 3: SNEAK PEEK CHINESE MENU ================= -->
     <div id="screen3" class="screen">
       <div class="chef-status">
-        <span>🥢 Waiter Otter: "Silakan Pilih Menu Favoritmu!"</span>
+        <span>🥢 Chinese Food Sneak Peek</span>
       </div>
 
-      <h2>Sneak Peek Menu 🥟</h2>
-      <p>Pilih hidangan Chinese Food yang paling kamu pengen:</p>
+      <h2>Pilihan Menu 🥟</h2>
+      <p>Pilih hidangan Chinese Food yang mau kamu nikmati:</p>
 
       <div class="menu-grid">
         <div class="menu-card" onclick="toggleMenu(this, 'Birthday Noodle (Mie Panjang Umur)')">
@@ -407,13 +449,13 @@
           <div class="menu-desc">Udang Goreng Mayones / Cumi Lada Hitam.</div>
         </div>
 
-        <div class="menu-card" onclick="toggleMenu(this, 'Beef Selection')">
+        <div class="menu-card" onclick="toggleMenu(this, 'Beef Dish')">
           <span class="menu-icon">🥩</span>
           <div class="menu-title">Beef Dish</div>
-          <div class="menu-desc">Sapi Szechuan / Tumis Daging Sapi.</div>
+          <div class="menu-desc">Sapi Szechuan / Tumis Daging Lada Hitam.</div>
         </div>
 
-        <div class="menu-card" onclick="toggleMenu(this, 'Chicken Selection')">
+        <div class="menu-card" onclick="toggleMenu(this, 'Chicken Dish')">
           <span class="menu-icon">🍗</span>
           <div class="menu-title">Chicken Dish</div>
           <div class="menu-desc">Ayam Kungpao / Ayam Goreng Mentega.</div>
@@ -436,25 +478,24 @@
       <div class="badge">Birthday Date Confirmed!</div>
       <h2>Can't Wait For 21 Sept! 🎉</h2>
 
-      <div class="otter-container" style="width: 140px; height: 140px;">
-        <!-- Happy Otter Couple Chef -->
+      <div class="otter-container" style="width: 150px; height: 150px;">
+        <!-- Otter Couple Celebrating -->
         <svg class="otter-svg" viewBox="0 0 200 200">
           <circle cx="100" cy="100" r="85" fill="#f4f1ea" />
-          <path d="M 70 120 C 70 80, 130 80, 130 120 Z" fill="#8d5b4c"/>
-          <circle cx="100" cy="90" r="25" fill="#8d5b4c"/>
-          <!-- Chef Hat -->
-          <path d="M 85 70 C 85 50, 115 50, 115 70 Z" fill="#ffffff"/>
-          <circle cx="93" cy="88" r="3" fill="#222"/>
-          <circle cx="107" cy="88" r="3" fill="#222"/>
-          <ellipse cx="100" cy="93" rx="4" ry="3" fill="#4a2e2b"/>
-          <path d="M 92 100 Q 100 106 108 100" stroke="#222" stroke-width="2" fill="none"/>
+          <path d="M 70 120 C 70 80, 130 80, 130 120 Z" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3"/>
+          <circle cx="100" cy="90" r="28" fill="var(--otter-fur)" stroke="var(--otter-stroke)" stroke-width="3"/>
+          <circle cx="100" cy="92" r="20" fill="var(--otter-cream)"/>
+          <circle cx="92" cy="88" r="3" fill="var(--otter-stroke)"/>
+          <circle cx="108" cy="88" r="3" fill="var(--otter-stroke)"/>
+          <ellipse cx="100" cy="93" rx="3" ry="2" fill="var(--otter-stroke)"/>
+          <path d="M 94 98 Q 100 104 106 98" stroke="var(--otter-stroke)" stroke-width="2" fill="none"/>
         </svg>
       </div>
 
       <div class="summary-box">
         <div class="summary-item">
           <span class="summary-label">Acara:</span>
-          <span class="summary-val">28th Birthday Dinner</span>
+          <span class="summary-val">28th Birthday Dinner Date</span>
         </div>
         <div class="summary-item">
           <span class="summary-label">Tanggal:</span>
@@ -464,17 +505,13 @@
           <span class="summary-label">Jam:</span>
           <span class="summary-val" id="sumTime">19:00 WIB</span>
         </div>
-        <div class="summary-item">
-          <span class="summary-label">Restoran:</span>
-          <span class="summary-val" id="sumResto">-</span>
-        </div>
         <div class="summary-item" style="flex-direction: column; gap: 4px; margin-top: 6px;">
           <span class="summary-label">Menu Pilihan:</span>
           <span class="summary-val" id="sumMenu" style="font-size: 0.85rem; color: var(--emerald);">-</span>
         </div>
       </div>
 
-      <p style="font-size: 0.85rem; margin-bottom: 15px;">Klik tombol di bawah untuk konfirmasi via WhatsApp ke aku ya!</p>
+      <p style="font-size: 0.85rem; margin-bottom: 12px;">Klik tombol di bawah untuk kirim konfirmasi langsung ke WhatsApp aku ya!</p>
 
       <div class="btn-group">
         <button class="btn btn-emerald" onclick="sendWhatsApp()">Kirim Konfirmasi WA 📲</button>
@@ -492,7 +529,7 @@
 
       if (screenNum === 4) {
         confetti({
-          particleCount: 100,
+          particleCount: 120,
           spread: 70,
           origin: { y: 0.6 }
         });
@@ -517,10 +554,7 @@
     }
 
     function updateSummary() {
-      const resto = document.getElementById('restoranName').value || "Restoran Chinese Food";
       const time = document.getElementById('dinnerTime').value;
-      
-      document.getElementById('sumResto').innerText = resto;
       document.getElementById('sumTime').innerText = time;
       
       if (selectedMenus.length > 0) {
@@ -531,14 +565,12 @@
     }
 
     function sendWhatsApp() {
-      const resto = document.getElementById('restoranName').value || "Restoran Chinese Food";
       const time = document.getElementById('dinnerTime').value;
       const menuList = selectedMenus.length > 0 ? selectedMenus.join(', ') : "Bebas pilih di tempat!";
 
-      const text = `Halo! 🦦✨ Aku mau konfirmasi Birthday Dinner Date ke-28 (21 Sept)!%0A%0A📍 *Restoran:* ${resto}%0A⏰ *Jam:* ${time}%0A🥟 *Menu Incerean:* ${menuList}%0A%0ACan't wait! 🎉❤️`;
+      const text = `Halo! 🦦✨ Aku mau konfirmasi Birthday Dinner Date ke-28 (21 Sept)!%0A%0A⏰ *Jam:* ${time}%0A🥟 *Menu Incerean:* ${menuList}%0A%0ACan't wait for our Chinese Food dinner! 🎉❤️`;
       
-      // Gantilah dengan nomor WhatsApp kamu sendiri jika diperlukan (contoh: 628123456789)
-      window.open(`https://wa.me/?text=${text}`, '_blank');
+      window.open(`https://wa.me/6282297772129?text=${text}`, '_blank');
     }
   </script>
 </body>
