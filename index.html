@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Earth Tone Palette */
       --bg-color: #f4f1ea;
       --maroon: #6b1d2f;
       --maroon-dark: #4a121f;
@@ -17,225 +16,113 @@
       --gold: #d4af37;
       --text-dark: #2b2b2b;
       --card-bg: #ffffff;
-      
-      /* Otter Colors matching reference */
       --otter-fur: #b27053;
       --otter-cream: #fcf1df;
       --otter-stroke: #2d1b14;
       --water-blue: #84c2d4;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-dark);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      overflow-x: hidden;
+      background-color: var(--bg-color); color: var(--text-dark); min-height: 100vh;
+      display: flex; justify-content: center; align-items: center; padding: 20px; overflow-x: hidden;
       background-image: radial-gradient(var(--maroon) 0.5px, transparent 0.5px), radial-gradient(var(--emerald) 0.5px, var(--bg-color) 0.5px);
-      background-size: 24px 24px;
-      background-position: 0 0, 12px 12px;
+      background-size: 24px 24px; background-position: 0 0, 12px 12px;
     }
 
     .container {
-      width: 100%;
-      max-width: 480px;
-      background: var(--card-bg);
-      border-radius: 28px;
-      box-shadow: 0 18px 40px rgba(107, 29, 47, 0.12);
-      border: 2px solid rgba(212, 175, 55, 0.35);
-      padding: 32px 24px;
-      text-align: center;
-      position: relative;
+      width: 100%; max-width: 480px; background: var(--card-bg); border-radius: 28px;
+      box-shadow: 0 18px 40px rgba(107, 29, 47, 0.12); border: 2px solid rgba(212, 175, 55, 0.35);
+      padding: 32px 24px; text-align: center; position: relative;
     }
 
     .badge {
-      display: inline-block;
-      background-color: var(--emerald);
-      color: #fff;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+      display: inline-block; background-color: var(--emerald); color: #fff; padding: 6px 16px;
+      border-radius: 20px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
     }
 
-    h1, h2 {
-      font-family: 'Cinzel', serif;
-      color: var(--maroon);
-      margin-bottom: 6px;
-    }
-
-    p {
-      color: #555;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
+    h1, h2 { font-family: 'Cinzel', serif; color: var(--maroon); margin-bottom: 6px; }
+    p { color: #555; font-size: 0.95rem; line-height: 1.5; }
 
     /* Otter Visual */
-    .otter-container {
-      width: 220px;
-      height: 220px;
-      margin: 10px auto 20px;
-      position: relative;
-    }
+    .otter-container { width: 220px; height: 220px; margin: 10px auto 20px; position: relative; }
+    .otter-svg { width: 100%; height: 100%; filter: drop-shadow(0 6px 12px rgba(45, 27, 20, 0.15)); }
+    .chef-status { display: inline-flex; align-items: center; gap: 8px; background: rgba(27, 67, 50, 0.08); border: 1px solid rgba(27, 67, 50, 0.2); padding: 8px 18px; border-radius: 30px; margin-bottom: 16px; font-size: 0.85rem; color: var(--emerald); font-weight: 700; }
 
-    .otter-svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 6px 12px rgba(45, 27, 20, 0.15));
-    }
+    /* Screens & Navigation */
+    .screen { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .screen.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    .chef-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(27, 67, 50, 0.08);
-      border: 1px solid rgba(27, 67, 50, 0.2);
-      padding: 8px 18px;
-      border-radius: 30px;
-      margin-bottom: 16px;
-      font-size: 0.85rem;
-      color: var(--emerald);
-      font-weight: 700;
-    }
-
-    .screen {
-      display: none;
-      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Buttons */
-    .btn-group {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      margin-top: 24px;
-      position: relative;
-      min-height: 52px;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 50px;
-      border: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
+    .btn-group { display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 24px; position: relative; min-height: 52px; }
+    .btn { padding: 14px 28px; border-radius: 50px; border: none; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
     .btn-primary { background-color: var(--maroon); color: #fff; box-shadow: 0 4px 14px rgba(107, 29, 47, 0.35); }
     .btn-primary:hover { background-color: var(--maroon-dark); transform: translateY(-2px); }
     .btn-emerald { background-color: var(--emerald); color: #fff; box-shadow: 0 4px 14px rgba(27, 67, 50, 0.3); }
     .btn-emerald:hover { background-color: var(--emerald-light); transform: translateY(-2px); }
     .btn-secondary { background-color: #e8e8e8; color: #555; }
 
-    /* Interactive Wok Mini Game */
+    /* Interactive Wok & Stove Mini Game */
     .wok-area {
-      width: 100%;
-      height: 160px;
-      background: rgba(212, 175, 55, 0.05);
-      border: 2px dashed var(--gold);
-      border-radius: 20px;
-      margin: 20px 0;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      padding-bottom: 20px;
+      width: 100%; height: 170px; background: rgba(212, 175, 55, 0.05); border: 2px dashed var(--gold); border-radius: 20px;
+      margin: 20px 0; position: relative; overflow: hidden;
     }
-    
     .wok-graphic {
-      width: 140px;
-      height: 70px;
-      background: #2b2b2b;
-      border-radius: 0 0 70px 70px;
-      position: relative;
-      z-index: 2;
-      box-shadow: inset 0 -8px 0 rgba(0,0,0,0.4);
+      width: 140px; height: 70px; background: #2b2b2b; border-radius: 0 0 70px 70px;
+      position: absolute; bottom: 45px; left: 50%; transform: translateX(-50%); z-index: 3; box-shadow: inset 0 -8px 0 rgba(0,0,0,0.4);
     }
+    .wok-handle { position: absolute; width: 40px; height: 12px; background: #4a2e2b; right: -35px; top: 10px; border-radius: 6px; transform: rotate(-15deg); }
     
-    .wok-handle {
-      position: absolute;
-      width: 40px;
-      height: 12px;
-      background: #4a2e2b;
-      right: -35px;
-      top: 10px;
-      border-radius: 6px;
-      transform: rotate(-15deg);
+    /* Stove & Fire */
+    .stove-base {
+      width: 80px; height: 12px; background: #4a4a4a; border-radius: 6px;
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 1; border-bottom: 3px solid #222;
+    }
+    .fire {
+      position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; gap: 4px;
+    }
+    .flame {
+      width: 16px; height: 26px; background: #ff5e00; border-radius: 50% 50% 20% 20%; animation: flicker 0.4s infinite alternate; filter: drop-shadow(0 0 4px #ff9900);
+    }
+    .flame:nth-child(2) { background: #ff9900; height: 34px; animation-delay: 0.1s; margin-top: -6px; }
+    .flame:nth-child(3) { animation-delay: 0.2s; }
+    
+    @keyframes flicker {
+      0% { transform: scaleY(1) scaleX(1); opacity: 0.85; }
+      100% { transform: scaleY(1.2) scaleX(0.9) translateY(-3px); opacity: 1; background: #ffcc00; }
     }
 
-    #ingredients-layer {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
+    #ingredients-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+    
     @keyframes dropInWok {
       0% { transform: translateY(-120px) scale(1.5) rotate(-20deg); opacity: 0; }
       50% { opacity: 1; }
       100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
     }
-
     .falling-ingredient {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      font-size: 2.2rem;
-      animation: dropInWok 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+      position: absolute; bottom: 55px; left: 50%; font-size: 2.2rem;
+      animation: dropInWok 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+
+    /* Cooking Animation Classes */
+    @keyframes shakeWok {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      20% { transform: translate(-4px, -2px) rotate(-5deg); }
+      40% { transform: translate(4px, 2px) rotate(5deg); }
+      60% { transform: translate(-4px, 2px) rotate(-5deg); }
+      80% { transform: translate(4px, -2px) rotate(5deg); }
+    }
+    .cooking-shake { animation: shakeWok 0.4s infinite; display: inline-block; }
+    @keyframes popInDish {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     /* Menu Cards */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin: 15px 0;
-      text-align: left;
-    }
-
-    .menu-card {
-      border: 2px solid #e0e0e0;
-      border-radius: 16px;
-      padding: 10px;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: #fafafa;
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; text-align: left; }
+    .menu-card { border: 2px solid #e0e0e0; border-radius: 16px; padding: 10px; cursor: pointer; transition: all 0.2s; background: #fafafa; position: relative; display: flex; align-items: center; gap: 10px; }
     .menu-card:hover { border-color: var(--gold); transform: scale(1.02); }
     .menu-card.selected { border-color: var(--maroon); background-color: rgba(107, 29, 47, 0.06); opacity: 0.6; }
     .menu-icon { font-size: 1.8rem; }
@@ -248,18 +135,11 @@
     .form-control:focus { border-color: var(--maroon); }
 
     /* Summary Card */
-    .summary-box {
-      background: rgba(27, 67, 50, 0.04);
-      border: 1.5px dashed var(--emerald);
-      border-radius: 18px;
-      padding: 18px;
-      text-align: left;
-      margin: 18px 0;
-    }
+    .summary-box { background: rgba(27, 67, 50, 0.04); border: 1.5px dashed var(--emerald); border-radius: 18px; padding: 18px; text-align: left; margin: 18px 0; }
     .summary-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; }
     .summary-item:last-child { margin-bottom: 0; }
     .summary-label { color: #666; }
-    .summary-val { font-weight: 700; color: var(--maroon); }
+    .summary-val { font-weight: 700; color: var(--maroon); text-align: right; }
   </style>
 </head>
 <body>
@@ -273,7 +153,7 @@
       <p style="margin-top: 2px; font-weight: 600; color: var(--emerald);">21 September 2026</p>
 
       <div class="otter-container">
-        <!-- SVG Otter Membawa Ikan (Berdasarkan Referensi Gambar) -->
+        <!-- SVG Otter Membawa Ikan -->
         <svg class="otter-svg" viewBox="0 0 200 220">
           <ellipse cx="100" cy="200" rx="65" ry="12" fill="var(--water-blue)"/>
           <ellipse cx="100" cy="200" rx="55" ry="8" fill="#aee0ee"/>
@@ -315,10 +195,7 @@
 
     <!-- ================= SCREEN 2: TIME SELECTION ================= -->
     <div id="screen2" class="screen">
-      <div class="chef-status">
-        <span>👨‍🍳 Otter Chef Ready to Serve! 🥟</span>
-      </div>
-
+      <div class="chef-status"><span>👨‍🍳 Otter Chef Ready to Serve! 🥟</span></div>
       <h2>Pilih Waktu Dinner</h2>
       <p>Tentukan jam yang paling nyaman untuk kamu di tanggal 21 September:</p>
 
@@ -339,65 +216,63 @@
 
     <!-- ================= SCREEN 3: INTERACTIVE WOK (MINI GAME) ================= -->
     <div id="screen3" class="screen">
-      <div class="chef-status">
-        <span>🥢 Mini Game: Racik Menu Favoritmu!</span>
-      </div>
+      <div class="chef-status"><span>🥢 Mini Game: Racik Menu Favoritmu!</span></div>
+      <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 10px;">Klik kartu menu di bawah untuk melempar bahannya ke wajan panas!</p>
 
-      <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 10px;">Klik kartu menu di bawah untuk melempar bahannya ke dalam wajan!</p>
-
-      <!-- Interactive Wok Area -->
+      <!-- Interactive Wok & Stove Area -->
       <div class="wok-area">
         <div id="ingredients-layer"></div>
         <div class="wok-graphic">
           <div class="wok-handle"></div>
         </div>
+        <!-- Api & Kompor -->
+        <div class="fire">
+          <div class="flame"></div>
+          <div class="flame"></div>
+          <div class="flame"></div>
+        </div>
+        <div class="stove-base"></div>
       </div>
 
       <div class="menu-grid">
-        <div class="menu-card" id="card-noodle" onclick="tossIngredient(this, 'Birthday Noodle', '🍜')">
+        <div class="menu-card" onclick="tossIngredient(this, 'Birthday Noodle', '🍜')">
           <span class="menu-icon">🍜</span>
-          <div>
-            <div class="menu-title">Noodle</div>
-            <div class="menu-desc">Mie Panjang Umur.</div>
-          </div>
+          <div><div class="menu-title">Noodle</div><div class="menu-desc">Mie Panjang Umur.</div></div>
         </div>
-
-        <div class="menu-card" id="card-seafood" onclick="tossIngredient(this, 'Seafood', '🦐')">
+        <div class="menu-card" onclick="tossIngredient(this, 'Seafood', '🦐')">
           <span class="menu-icon">🦐</span>
-          <div>
-            <div class="menu-title">Seafood</div>
-            <div class="menu-desc">Udang / Cumi.</div>
-          </div>
+          <div><div class="menu-title">Seafood</div><div class="menu-desc">Udang / Cumi.</div></div>
         </div>
-
-        <div class="menu-card" id="card-beef" onclick="tossIngredient(this, 'Beef Dish', '🥩')">
+        <div class="menu-card" onclick="tossIngredient(this, 'Beef Dish', '🥩')">
           <span class="menu-icon">🥩</span>
-          <div>
-            <div class="menu-title">Beef Dish</div>
-            <div class="menu-desc">Sapi Szechuan.</div>
-          </div>
+          <div><div class="menu-title">Beef Dish</div><div class="menu-desc">Sapi Szechuan.</div></div>
         </div>
-
-        <div class="menu-card" id="card-chicken" onclick="tossIngredient(this, 'Chicken Dish', '🍗')">
+        <div class="menu-card" onclick="tossIngredient(this, 'Chicken Dish', '🍗')">
           <span class="menu-icon">🍗</span>
-          <div>
-            <div class="menu-title">Chicken</div>
-            <div class="menu-desc">Ayam Mentega.</div>
-          </div>
+          <div><div class="menu-title">Chicken</div><div class="menu-desc">Ayam Mentega.</div></div>
         </div>
-
-        <div class="menu-card" style="grid-column: span 2;" id="card-veggie" onclick="tossIngredient(this, 'Vegetables & Dimsum', '🥟')">
+        <div class="menu-card" style="grid-column: span 2;" onclick="tossIngredient(this, 'Vegetables & Dimsum', '🥟')">
           <span class="menu-icon">🥟</span>
-          <div>
-            <div class="menu-title">Vegetables & Dimsum</div>
-            <div class="menu-desc">Sayuran segar & aneka dimsum hangat.</div>
-          </div>
+          <div><div class="menu-title">Vegetables & Dimsum</div><div class="menu-desc">Sayuran segar & dimsum.</div></div>
         </div>
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-primary" onclick="goToScreen(4)" id="cookBtn" style="display: none;">Masak & Lihat Rangkuman ✨</button>
+        <button class="btn btn-primary" onclick="startCooking()" id="cookBtn" style="display: none;">Masak Sekarang! 🔥</button>
       </div>
+    </div>
+
+    <!-- ================= SCREEN 3.5: COOKING ANIMATION ================= -->
+    <div id="screencooking" class="screen">
+      <div class="chef-status"><span>👨‍🍳 Memproses Pesanan...</span></div>
+      
+      <div style="margin: 40px 0;">
+        <!-- Container untuk Icon Emoji yang Memasak / Disajikan -->
+        <div id="serving-icon" style="font-size: 5rem; text-shadow: 0 10px 20px rgba(0,0,0,0.1);">🍲</div>
+      </div>
+
+      <h2 id="cooking-title" style="margin-bottom: 10px;">Srenggg... 🔥</h2>
+      <p id="cooking-desc">Chef Otter sedang meracik menu spesial pilihanmu...</p>
     </div>
 
     <!-- ================= SCREEN 4: SUMMARY ================= -->
@@ -419,12 +294,12 @@
           <span class="summary-val" id="sumTime">19:00 WIB</span>
         </div>
         <div class="summary-item" style="flex-direction: column; gap: 4px; margin-top: 6px;">
-          <span class="summary-label">Racikan Menu Chef:</span>
-          <span class="summary-val" id="sumMenu" style="font-size: 0.85rem; color: var(--emerald);">-</span>
+          <span class="summary-label">Racikan Menu Spesial:</span>
+          <span class="summary-val" id="sumMenu" style="font-size: 0.85rem; color: var(--emerald); text-align: left;">-</span>
         </div>
       </div>
 
-      <p style="font-size: 0.85rem; margin-bottom: 12px;">Klik tombol di bawah untuk kirim pesananmu ke WhatsApp aku ya!</p>
+      <p style="font-size: 0.85rem; margin-bottom: 12px;">Klik tombol di bawah untuk kirim reservasi ke WhatsApp aku ya!</p>
 
       <div class="btn-group">
         <button class="btn btn-emerald" onclick="sendWhatsApp()">Kirim Konfirmasi WA 📲</button>
@@ -441,14 +316,9 @@
     
     let selectedMenus = [];
 
-    function goToScreen(screenNum) {
+    function goToScreen(screenId) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById('screen' + screenNum).classList.add('active');
-
-      if (screenNum === 4) {
-        confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
-        updateSummary();
-      }
+      document.getElementById('screen' + screenId).classList.add('active');
     }
 
     function moveNoButton() {
@@ -458,30 +328,60 @@
       btn.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    // Fungsi Mini Game (Lempar Bahan ke Wajan)
+    // Fungsi Melempar Bahan (Mini Game)
     function tossIngredient(element, menuName, emoji) {
       if (!selectedMenus.includes(menuName)) {
         selectedMenus.push(menuName);
         element.classList.add('selected');
 
-        // Buat elemen emoji yang akan jatuh
         const layer = document.getElementById('ingredients-layer');
         const item = document.createElement('div');
         item.className = 'falling-ingredient';
         item.innerText = emoji;
 
-        // Posisi jatuhnya sedikit diacak agar menumpuk rapi di wajan
         const randomX = (Math.random() - 0.5) * 60; 
         const randomY = (Math.random() - 0.2) * 20; 
-        item.style.transform = `translate(-50%, 0)`; // Reset position center
+        item.style.transform = `translate(-50%, 0)`; 
         item.style.marginLeft = `${randomX}px`;
         item.style.marginBottom = `${randomY}px`;
         
         layer.appendChild(item);
 
-        // Munculkan tombol masak setelah ada minimal 1 bahan
         document.getElementById('cookBtn').style.display = 'inline-flex';
       }
+    }
+
+    // Fungsi Transisi Memasak & Menghidangkan Makanan
+    function startCooking() {
+      goToScreen('cooking'); // Pindah ke Screen 3.5
+
+      const icon = document.getElementById('serving-icon');
+      const title = document.getElementById('cooking-title');
+      const desc = document.getElementById('cooking-desc');
+
+      // Tahap 1: Memasak (Wajan Bergoyang)
+      icon.innerText = "🍲";
+      icon.classList.add('cooking-shake');
+      title.innerText = "Srenggg... 🔥";
+      desc.innerText = "Chef Otter sedang memasak racikan spesialmu...";
+
+      // Tahap 2: Makanan Jadi (Tadaaa! & Konfeti)
+      setTimeout(() => {
+        icon.classList.remove('cooking-shake');
+        icon.innerText = "🍽️✨";
+        icon.style.animation = "popInDish 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+        
+        title.innerText = "Tadaaa! 😋";
+        desc.innerText = "Hidangan spesialmu siap disajikan!";
+        
+        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+
+        // Tahap 3: Pindah ke Rangkuman (Screen 4)
+        setTimeout(() => {
+          updateSummary();
+          goToScreen(4);
+        }, 2200); // Jeda 2.2 detik sebelum pindah
+      }, 2500); // Durasi memasak 2.5 detik
     }
 
     function updateSummary() {
